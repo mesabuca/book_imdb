@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160818121617) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +44,13 @@ ActiveRecord::Schema.define(version: 20160818121617) do
   create_table "books", force: :cascade do |t|
     t.string   "name"
     t.string   "publisher"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "author_id"
@@ -61,6 +69,8 @@ ActiveRecord::Schema.define(version: 20160818121617) do
     t.index ["book_id"], name: "index_comments_on_book_id", using: :btree
   end
 
+  add_foreign_key "books", "categories"
+
   create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -74,6 +84,11 @@ ActiveRecord::Schema.define(version: 20160818121617) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.date     "birth_day"
+    t.string   "gender"
     t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
@@ -94,4 +109,5 @@ ActiveRecord::Schema.define(version: 20160818121617) do
   add_foreign_key "comments", "books"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "members"
+
 end

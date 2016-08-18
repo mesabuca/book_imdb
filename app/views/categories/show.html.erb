@@ -1,0 +1,7 @@
+<h1><%= @category.kind %></h1>
+
+<% @category.books.each do |book| %>
+  <b>ID </b><%= book.id %>
+  <b>Title </b>
+  <%= link_to book.name, book_path(book) %><br/>
+<% end %>
