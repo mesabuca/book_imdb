@@ -17,6 +17,10 @@
         
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to categories_path do %>
+              <span class="glyphicon glyphicon-pen"></span>Categories
+              <% end -%>
+            </li>
             <li><%= link_to new_book_path do %>
               <span class="glyphicon glyphicon-pen"></span>New Book
               <% end -%>
