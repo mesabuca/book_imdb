@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   get 'votes/index'
   get 'authors/index'
 
-resources :categories, only: [:show, :index]
+resources :categories
 
 end

@@ -5,3 +5,8 @@
   <b>Title </b>
   <%= link_to book.name, book_path(book) %><br/>
 <% end %>
+
+<h3>
+	<%= link_to 'Edit Category', edit_category_path %>
+	<%= link_to 'Destroy Category', category_path(@category), method: :delete %>
+</h3>
