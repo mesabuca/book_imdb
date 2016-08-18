@@ -31,6 +31,12 @@
 </nav>
 
   <body>
+  <% if current_member.present? %>
+  	<%= link_to 'Çıkış', destroy_member_session_path, method: :delete %>
+  <% else %>
+  	
+  <% end %>
+  	<%= render 'flash' %>
     <%= yield %>
   </body>
 </html>
