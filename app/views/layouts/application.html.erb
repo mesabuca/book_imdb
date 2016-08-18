@@ -7,34 +7,40 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand">IMDBOOK</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'Ana Sayfa', root_path %></li>
-        
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to categories_path do %>
-              <span class="glyphicon glyphicon-pen"></span>Categories
-              <% end -%>
-            </li>
-            <li><%= link_to new_book_path do %>
-              <span class="glyphicon glyphicon-pen"></span>New Book
-              <% end -%>
-            </li>
-         	<li><%= link_to books_path do %>
-              <span class="glyphicon glyphicon-pen"></span>List Books
-              <% end -%>
-            </li>
-        </ul>
-      </div>
-    </nav>
-</nav>
+    <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" >IMDB <small>_BOOK</small> </a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                    <li></li>   <!-- category part I should write with each do dont forget TODO -->
+                  
+                </ul>
+              </li>
+              <li><a href="#">Page 2</a></li> 
+              <li><a href="#">Page 3</a></li> 
+            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to new_member_registration_path do %>
+                      <span class="glyphicon glyphicon-user"></span> Sign Up
+                      </li>
+                    <% end -%>
+                    <li><%= link_to new_user_session_path do %>
+                      <span class="glyphicon glyphicon-log-in"></span> Sign in
+                      </li>
+                    <% end -%>
+                </ul>
+          </div>
+        </nav>
+    
+        <%= yield %>
+    </body>
 
-  <body>
-    <%= yield %>
-  </body>
 </html>
