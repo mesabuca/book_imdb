@@ -10,14 +10,17 @@
   <%= @book.publisher %>
 </p>
 
-
-
 <p>
   <strong>Category:</strong>
 	<%= @book.category.kind %>
 </p>
 
-
+<p>
+  <strong>Author:</strong>
+	<%= link_to @book.author do %>
+		<%= @book.author.first_name + " " + @book.author.last_name %>
+	<% end %>
+</p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
