@@ -9,7 +9,9 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20160818080406) doActiveRecord::Schema.define(version: 20160818111035) do
+
+ActiveRecord::Schema.define(version: 20160818112906) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +38,9 @@ ActiveRecord::Schema.define(version: 20160818080406) doActiveRecord::Schema.defi
     t.text     "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end  create_table "books", force: :cascade do |t|
+  end
+
+  create_table "books", force: :cascade do |t|
     t.string   "name"
     t.string   "publisher"
     t.datetime "created_at", null: false
@@ -65,8 +69,11 @@ ActiveRecord::Schema.define(version: 20160818080406) doActiveRecord::Schema.defi
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "book_id"
+    t.integer  "member_id"
     t.index ["book_id"], name: "index_votes_on_book_id", using: :btree
+    t.index ["member_id"], name: "index_votes_on_member_id", using: :btree
   end
 
   add_foreign_key "votes", "books"
+  add_foreign_key "votes", "members"
 end
