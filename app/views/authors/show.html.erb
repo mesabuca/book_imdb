@@ -1,0 +1,31 @@
+Display Author<br /><br />
+<div class="container">
+<b>ID:  </b><%= @author.id %><br />
+<b>First Name:  </b><%= @author.first_name %><br />
+<b>Last Name:  </b><%= @author.last_name %><br />
+<b>Biyografi: </b><%= @author.biography %>
+<br/><br/>
+
+<br /><br /><br />
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Books
+  </div>
+  <div class="panel-body">
+
+    <% @author.books.each do |b| %>
+      <p><%= b.name %></p>
+    <% end %>
+
+  </div>
+</div> 
+
+
+<br/><br/>
+<%= link_to "Back to Author list", authors_path %>
+<br/>
+<%= link_to "Edit Author", edit_author_path(@author) %>
+<br/>
+<%= link_to "Sil", author_path(@author), method: :delete %>
+</div>

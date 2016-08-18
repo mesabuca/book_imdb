@@ -1,0 +1,30 @@
+<h1>Editing <%= @author.first_name + " " + @author.last.name %></h1>
+
+<% if @author.errors.any? %>
+  <h3>
+    <%= @author.errors.full_messages.join(", ") %>
+  </h3>
+<% end %>
+<div class="container">
+<%= form_for @author do |f| %>
+  <%= f.label "First Name" %>
+  <%= f.text_field :first_name, class: "form-control input-sm" %><br>
+  <br>
+  <%= f.label "Last Name" %>
+  <br>
+  <%= f.text_field :last_name, class: "form-control input-sm" %><br>
+  <br>
+  <%= f.label "Biyografi" %>
+  <br>
+  <%= f.text_area :biography, rows: 20, col: 20 %><br>
+  <br>
+  
+  <% @author.books.each do |b| %>
+    <%= b.name %>
+  
+  <%end%>
+
+  <%= f.submit 'Gonder' %>
+<% end %>
+</div>
+
