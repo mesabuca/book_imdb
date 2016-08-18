@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'votes/index'
   resources :books
   get 'authors/index'
   root to: 'welcome#index'
