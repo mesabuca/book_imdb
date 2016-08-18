@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 20160818121617) do
     t.integer  "author_id"
     t.integer  "admin_id"
     t.integer  "category_id"
-    t.integer  "author_id"
-    t.integer  "admin_id"
     t.index ["admin_id"], name: "index_books_on_admin_id", using: :btree
     t.index ["author_id"], name: "index_books_on_author_id", using: :btree
   end
