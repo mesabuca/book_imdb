@@ -23,7 +23,11 @@
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   
-                    <li></li>   <!-- category part I should write with each do dont forget TODO -->
+                    <li>
+                      <% @nav_categories.each do |category| %>
+                        <%=link_to category.kind, category_path(category) %>
+                      <% end %>
+                    </li>   <!-- category part I should write with each do dont forget TODO -->
                   
                 </ul>
               </li>
@@ -33,28 +37,30 @@
                     <li><%= link_to destroy_member_session_path, method: :delete do %>
                       <span class="glyphicon glyphicon-log-out"></span> Sign Out
                       </li>
-                    <% end -%>
-                  <% else %>
-                    <li><%= link_to new_member_registration_path do %>
-                      <span class="glyphicon glyphicon-user"></span> Sign Up
-                      </li>
-                    <% end -%>
-                    <li><%= link_to new_member_session_path do %>
-                      <span class="glyphicon glyphicon-log-in"></span> Sign in
-                      </li>
-                    <% end -%>
-                  <% end -%>
-                  <% if current_admin %>
+                    <% end %>
+                  <% elsif current_admin %>
                     <li><%= link_to new_book_path do %>
                       <span class="fa fa-book"></span>New book
                     <% end -%>
                     </li>
-
                     <li><%= link_to new_category_path do %>
-                      <span class="fa fa-book"></span>New book
+                      <span class="fa fa-book"></span>New category
                     </li>
-                    <% end -%>
-                  <% end -%>
+                    <% end %>
+                    <li><%= link_to destroy_admin_session_path, method: :delete do %>
+                      <span class="glyphicon glyphicon-log-out"></span> Sign Out
+                      </li>
+                    <% end %>  
+                  <% else %>
+                    <li><%= link_to new_member_registration_path do %>
+                      <span class="glyphicon glyphicon-user"></span> Sign Up
+                      </li>
+                    <% end %>
+                    <li><%= link_to new_member_session_path do %>
+                      <span class="glyphicon glyphicon-log-in"></span> Sign in
+                      </li>
+                    <% end %>
+                  <% end %>
                 </ul>
           </div>
         </nav>
