@@ -37,7 +37,7 @@ class AuthorsController < ApplicationController
 
   def destroy
   	@author.destroy
-    redirect_to author_path, notice: "Author was deleted"
+    redirect_to authors_path, notice: "Author was deleted"
   end
 
   def edit
