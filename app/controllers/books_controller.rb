@@ -15,15 +15,18 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    set_categories
   end
 
   # GET /books/1/edit
   def edit
+    set_categories
   end
 
   # POST /books
   # POST /books.json
   def create
+    set_categories
     @book = Book.new(book_params)
 
     respond_to do |format|
@@ -69,6 +72,10 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :publisher)
+      params.require(:book).permit(:name, :publisher, :category_id)
+    end
+
+    def set_categories
+    @categories = Category.all.collect {|c| [c.kind, c.id ] }
     end
 end

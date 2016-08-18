@@ -21,6 +21,13 @@
     <%= f.text_field :publisher %>
   </div>
 
+ <div class="field">
+    <%= f.label :category %>
+    <%= f.select :category_id, @categories %>
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

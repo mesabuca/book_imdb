@@ -15,6 +15,6 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-/db/shema.rb
+/db/schema.rb
 .idea
 
