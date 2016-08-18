@@ -69,10 +69,17 @@ ActiveRecord::Schema.define(version: 20160818113955) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
 
+
   create_table "votes", force: :cascade do |t|
     t.integer  "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "book_id"
+    t.integer  "member_id"
+    t.index["book_id"], name: "index_votes_on_book_id", using: :btree
+    t.index ["member_id"], name: "index_votes_on_member_id", using: :btree
   end
 
+  add_foreign_key "votes", "books"
+  add_foreign_key "votes", "members"
 end
