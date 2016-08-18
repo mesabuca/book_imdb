@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   root to: 'welcome#index'
   resources :books
   devise_for :admins

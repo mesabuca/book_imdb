@@ -59,8 +59,16 @@
                     <li><%= link_to new_member_session_path do %>
                       <span class="glyphicon glyphicon-log-in"></span> Sign in
                       </li>
-                    <% end %>
-                  <% end %>
+                    <% end -%>
+                  <% end -%>
+                  <% if current_admin %>
+                    <li><%= link_to new_book_path do %>
+                      <span class="fa fa-book"></span>New book
+                    <% end -%>
+                    </li>
+
+                  <% end -%>
+
                 </ul>
           </div>
         </nav>
