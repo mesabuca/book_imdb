@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20160818111035) do
+ActiveRecord::Schema.define(version: 20160818121617) do
 
 
 
@@ -55,6 +54,20 @@ ActiveRecord::Schema.define(version: 20160818111035) do
     t.string   "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "author_id"
+    t.integer  "admin_id"
+    t.index ["admin_id"], name: "index_books_on_admin_id", using: :btree
+    t.index ["author_id"], name: "index_books_on_author_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "book_id"
+    t.integer  "author_id"
+    t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
+    t.index ["book_id"], name: "index_comments_on_book_id", using: :btree
   end
 
   add_foreign_key "books", "categories"
@@ -87,10 +100,14 @@ ActiveRecord::Schema.define(version: 20160818111035) do
     t.datetime "updated_at", null: false
     t.integer  "book_id"
     t.integer  "member_id"
-    t.index["book_id"], name: "index_votes_on_book_id", using: :btree
+    t.index ["book_id"], name: "index_votes_on_book_id", using: :btree
     t.index ["member_id"], name: "index_votes_on_member_id", using: :btree
   end
 
+  add_foreign_key "books", "admins"
+  add_foreign_key "books", "authors"
+  add_foreign_key "comments", "authors"
+  add_foreign_key "comments", "books"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "members"
 
