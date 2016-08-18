@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160818121617) do
     t.string   "publisher"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "author_id"
+    t.integer  "admin_id"
     t.integer  "category_id"
     t.integer  "author_id"
     t.integer  "admin_id"
@@ -64,8 +66,10 @@ ActiveRecord::Schema.define(version: 20160818121617) do
     t.datetime "updated_at", null: false
     t.integer  "book_id"
     t.integer  "author_id"
+    t.integer  "member_id"
     t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
     t.index ["book_id"], name: "index_comments_on_book_id", using: :btree
+    t.index ["member_id"], name: "index_comments_on_member_id", using: :btree
   end
 
   create_table "members", force: :cascade do |t|
@@ -105,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160818121617) do
   add_foreign_key "books", "categories"
   add_foreign_key "comments", "authors"
   add_foreign_key "comments", "books"
+  add_foreign_key "comments", "members"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "members"
 end
