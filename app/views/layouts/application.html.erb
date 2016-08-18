@@ -7,6 +7,28 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">IMDBOOK</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Ana Sayfa', root_path %></li>
+        
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to new_book_path do %>
+              <span class="glyphicon glyphicon-pen"></span>New Book
+              <% end -%>
+            </li>
+         	<li><%= link_to books_path do %>
+              <span class="glyphicon glyphicon-pen"></span>List Books
+              <% end -%>
+            </li>
+        </ul>
+      </div>
+    </nav>
+</nav>
 
   <body>
     <%= yield %>
