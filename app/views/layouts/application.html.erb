@@ -30,7 +30,10 @@
             </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <% if current_member  %>
-                    helallan bağlanmışın
+                    <li><%= link_to destroy_member_session_path, method: :delete do %>
+                      <span class="glyphicon glyphicon-log-out"></span> Sign Out
+                      </li>
+                    <% end -%>
                   <% else %>
                     <li><%= link_to new_member_registration_path do %>
                       <span class="glyphicon glyphicon-user"></span> Sign Up
@@ -47,10 +50,10 @@
                     <% end -%>
                     </li>
 
-                    <!--<li><%= link_to new_category_path do %>
+                    <li><%= link_to new_category_path do %>
                       <span class="fa fa-book"></span>New book
                     </li>
-                    <% end -%>-->
+                    <% end -%>
                   <% end -%>
                 </ul>
           </div>
