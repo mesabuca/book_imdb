@@ -1,0 +1,5 @@
+<h1>Listing Categories</h1>
+
+<% @categories.each do |c| %>
+  <%= link_to c.kind, category_path(c) %><br />
+<% end %>
