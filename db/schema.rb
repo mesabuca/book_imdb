@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818121334) do
+ActiveRecord::Schema.define(version: 20160818121617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20160818121334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "book_id"
+    t.integer  "author_id"
+    t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
     t.index ["book_id"], name: "index_comments_on_book_id", using: :btree
   end
 
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160818121334) do
 
   add_foreign_key "books", "admins"
   add_foreign_key "books", "authors"
+  add_foreign_key "comments", "authors"
   add_foreign_key "comments", "books"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "members"
