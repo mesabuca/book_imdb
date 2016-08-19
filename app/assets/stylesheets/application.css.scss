@@ -17,9 +17,31 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-    background-color: lightblue;
+.book{
+	background-image: image_url('newbook.jpg');
+	background-size:cover;
 }
+
+#books{
+	background-image: image_url('lib.jpg');
+	background-size:cover;
+}
+
+.sign{
+	background-image: image_url('sign.jpg');
+	background-size:cover;
+}
+
+#welcomej {
+	background-image: image_url('paper.jpg');
+	background-size:cover;
+}
+
+#welcome {
+	background-image: image_url('books.jpg');
+	background-size: cover;
+}
+
 #bg {
 
     background-color: #0066CC ;

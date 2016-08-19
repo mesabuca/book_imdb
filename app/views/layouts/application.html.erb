@@ -18,36 +18,63 @@
                 <span class="fa fa-home"></span> Home
                 <% end -%>
               </li>
+              <% if current_admin %>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
                 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  
+                <ul class="dropdown-menu">  
                     <li>
                       <% @nav_categories.each do |category| %>
                         <%=link_to category.kind, category_path(category) %>
                       <% end %>
                     </li>   <!-- category part I should write with each do dont forget TODO -->
-
                 </ul>
               </li>
               <li>
                       <%=link_to "MyRents", rents_path %>
                   </li>
+                </ul>
+              </li>
+              <% end %>
             </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <% if current_member  %>
+                  <li>
+                    <li><%= link_to books_path do%>
+                    <span class="fa fa-globe"></span> All Book
+                    <% end -%>
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+                      <span class="caret"></span></a>
+                      <ul class="dropdown-menu">  
+                          <li>
+                            <% @nav_categories.each do |category| %>
+                              <%=link_to category.kind, category_path(category) %>
+                            <% end %>
+                          </li>   <!-- category part I should write with each do dont forget TODO -->
+                      </ul>
+                    </li>
+
                     <li><%= link_to destroy_member_session_path, method: :delete do %>
-                      <span class="glyphicon glyphicon-log-out"></span> Sign Out
-                      </li>
-                    <% end %>
+                        <span class="glyphicon glyphicon-log-out"></span> Sign Out
+                        <% end %>
+                    </li>
+                    <li><%= link_to edit_member_registration_path do %>
+                        <span class="fa fa-cog"></span> Account
+                        <% end %>
+                    </li>
                   <% elsif current_admin %>
                     <li><%= link_to new_book_path do %>
-                      <span class="fa fa-book"></span>New book
+                      <span class="fa fa-book"></span> New Book
+                    <% end -%>
+                    </li>
+                    <li><%= link_to new_author_path do %>
+                      <span class="fa fa-pencil"></span> New Author
                     <% end -%>
                     </li>
                     <li><%= link_to new_category_path do %>
-                      <span class="fa fa-book"></span>New category
+                      <span class="fa fa-list"></span> New Category
                     </li>
                     <% end %>
                     <li><%= link_to destroy_admin_session_path, method: :delete do %>
@@ -62,12 +89,13 @@
                     <li><%= link_to new_member_session_path do %>
                       <span class="glyphicon glyphicon-log-in"></span> Sign in
                       </li>
-                    <% end %>
-                  <% end %>
+                    <% end -%>
+                  <% end -%>
+
                 </ul>
           </div>
         </nav>
-    
+        <%= render 'flash' %>
         <%= yield %>
     </body>
 

@@ -1,34 +1,32 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
-  # GET /books
-  # GET /books.json
   def index
     @books = Book.all
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
+    if current_member
+      if @book.votes.where(member_id: current_member.id).any?
+        @vote = @book.votes.where(member_id: current_member.id).first
+      else
+        @vote = @book.votes.build
+      end
+    end
   end
 
-  # GET /books/new
   def new
     @book = Book.new
     set_categories
   end
 
-  # GET /books/1/edit
   def edit
     set_categories
   end
 
-  # POST /books
-  # POST /books.json
   def create
     set_categories
     @book = Book.new(book_params)
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -40,8 +38,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
       if @book.update(book_params)
@@ -54,8 +50,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
     @book.destroy
     respond_to do |format|
@@ -65,17 +59,18 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_book
       @book = Book.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :publisher, :category_id)
+      params.require(:book).permit(:name, :publisher, :category_id, :author_id)
     end
 
     def set_categories
-    @categories = Category.all.collect {|c| [c.kind, c.id ] }
+      @categories = Category.all.collect {|c| [c.kind, c.id ] }
+      @authors = Author.all.collect {|a| [[a.first_name, a.last_name].join(" "), a.id ] }
     end
+
 end
