@@ -1,13 +1,24 @@
-<body id="welcome">
-	<div class="container">
-		<div class="page-header">
-			<div class="jumbotron">
-				<h1>Welcome to the IMDB <small>_BOOK</small> </h1>
-				<h2>This site make easier finding books for readers</h2>
 
-				<%= link_to "Sign In",new_member_session_path, class:"btn btn-primary btn-block"%>
-				<%= link_to "Sign Up",new_member_registration_path, class:"btn btn-danger btn-block" %>
-			</div>
+<% if current_member || if current_admin %>
+	<script type="text/javascript">
+    	window.location.href = "books"
+    </script>
+<% else %>
+
+
+<body id="welcome">
+
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+	<div class="well" id="welcomej">
+		<div class="page-header" align="center">	
+			<h1>Welcome to IMDB<small>_BOOK</small> </h1>
+			<h2>This site make easier to choose book the readers.</h2>
+			<%= link_to "Sign In",new_member_session_path, class:"btn btn-primary btn-block" %>
+			<%= link_to "Sign Up",new_member_registration_path, class:"btn btn-warning btn-block" %>
 		</div>
 	</div>
+</div>
 </body>
+<% end -%>
+<% end -%>
