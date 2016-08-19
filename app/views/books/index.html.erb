@@ -16,23 +16,18 @@
             <br>
             <h4>Category : <%= book.category.kind %></h4>
             <br>
-          <div class="col-sm-4"><%= link_to 'Show', book, class:"btn btn-info btn-block" %></div>
-          <div class="col-sm-4"><%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning btn-block" %></div>
-          <div class="col-sm-4"><%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger btn-block", data: { confirm: 'Are you sure?' } %></div>
+            <div class="col-sm-4"><%= link_to 'Show', book, class:"btn btn-info btn-block" %></div>
+            <% if current_admin.present? %>
+              <div class="col-sm-4"><%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning btn-block" %></div>
+              <div class="col-sm-4"><%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger btn-block", data: { confirm: 'Are you sure?' } %></div>
+              <div class="col-sm-4"><%= link_to 'New Book', new_book_path, class:"btn btn-default btn-block" %></div>
+            <% end %>
           </div>
-
-          <%= link_to 'Show', book, class:"btn btn-info" %>
-          <% if current_admin.present? %>
-            <%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning" %>
-            <%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
-          <% end %>
         </tr>
        
       <% end %>
   </div>
 
     <br>
-
-    <%= link_to 'New Book', new_book_path %>
 </div>
 </body>
