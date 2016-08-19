@@ -1,19 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'rents/index'
-
-  get 'rents/show'
-
-  get 'rents/destroy'
-
-  get 'rents/edit'
-
-  get 'rents/update'
-
-  get 'rents/new'
 
   root to: 'welcome#index'
-  resources :books
+  resources :books do
+    resources :rents
+  end
   devise_for :admins
   devise_for :members
   resources :authors
@@ -21,5 +12,6 @@ Rails.application.routes.draw do
   get 'authors/index'
 
 resources :categories
+
 
 end
