@@ -1,2 +1,5 @@
-<h1>Rents#index</h1>
-<p>Find me in app/views/rents/index.html.erb</p>
+<h1>Listing Rents</h1>
+
+<% @rents.each do |r| %>
+  <%= link_to r.book.name, rent_path(r) %><br />
+<% end %>

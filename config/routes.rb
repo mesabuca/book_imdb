@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get 'authors/index'
 
 resources :categories
-
+resources :rents
 
 end

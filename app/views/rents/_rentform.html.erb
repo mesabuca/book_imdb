@@ -3,10 +3,7 @@
 	<h4><%= rent.member.email %></h4>
 	<%= rent.date_of_receipt %></br>
 	<%= rent.book.name %></br>
-	<% if current_member.present? && current_member.id == rent.member_id %>
-		<%= link_to 'Edit', edit_book_rent_path(@book, rent) %>
-		<%= link_to 'Delete', [rent.book, rent], method: :delete %></br>
-	<% end %>
+	
 	<hr>
 <% end %>
 <h3>Create Rent</h3>

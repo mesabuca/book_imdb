@@ -28,9 +28,12 @@
                         <%=link_to category.kind, category_path(category) %>
                       <% end %>
                     </li>   <!-- category part I should write with each do dont forget TODO -->
-                  
+
                 </ul>
               </li>
+              <li>
+                      <%=link_to "MyRents", rents_path %>
+                  </li>
             </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <% if current_member  %>
