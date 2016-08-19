@@ -2,9 +2,16 @@ Rails.application.routes.draw do
 
   resources :comments
   root to: 'welcome#index'
+
+
   resources :books do
   	resources :votes, only: [:create, :update]
+    collection do
+      get :top_books
+    end
   end
+
+
   devise_for :admins
   devise_for :members
   resources :authors
@@ -12,7 +19,9 @@ Rails.application.routes.draw do
   get 'authors/index'
 
 
-resources :categories
+
+  resources :categories, only: [:show, :index]
+
 
 
 end

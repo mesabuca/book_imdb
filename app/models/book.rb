@@ -8,5 +8,13 @@ class Book < ApplicationRecord
      point = votes.average(:point)
      point ? point.to_s : "0.0"
     end
-    
+
+	def self.top_books	
+     self.joins(:votes)
+      .select("books.*, avg(votes.point) as puan")
+      .group("books.id")
+      .order("puan DESC")
+      .limit(10)
+  end
+
 end

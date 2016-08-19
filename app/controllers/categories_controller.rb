@@ -17,6 +17,10 @@ class CategoriesController < ApplicationController
 			render :new
 		end
 	end
+	
+	def top_books
+	    @books = @category.top_books
+    end
 
 	def show
 		
