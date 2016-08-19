@@ -12,10 +12,13 @@
             <h3> Name : <%= book.name %></h3>
           </div>
           <div class="panel panel-body">
+          <div class="col-sm-8">
            <h4>Publisher : <%= book.publisher %></h4>
             <br>
             <h4>Category : <%= book.category.kind %></h4>
             <br>
+          </div>
+          <div class="col-sm-4"> <div class="pic"> <%= image_tag(book.avatar.url(:thumb)) %></div></div>
             <div class="col-sm-4"><%= link_to 'Show', book, class:"btn btn-info btn-block" %></div>
             <% if current_admin.present? %>
               <div class="col-sm-4"><%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning btn-block" %></div>
