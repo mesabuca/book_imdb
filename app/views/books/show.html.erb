@@ -10,19 +10,27 @@
   <%= @book.publisher %>
 </p>
 
-
-
 <p>
   <strong>Category:</strong>
 	<%= @book.category.kind %>
 </p>
 
+<p>
+  <strong>Author:</strong>
+	<%= link_to @book.author do %>
+		<%= @book.author.first_name + " " + @book.author.last_name %>
+	<% end %>
+</p>
 
+<<<<<<< HEAD
 <b>Average Rating: </b><%= @book.average_point %><br/>
 
 <%= render 'votes/form' %>
 
 
+=======
+<%= render 'votes/form' %>
+>>>>>>> fb80dde28e49cd5ea0f73d58fb78e7ef7faab70c
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
