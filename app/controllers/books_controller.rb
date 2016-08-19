@@ -10,6 +10,13 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    if current_member
+      if @book.votes.where(member_id: current_member.id).any?
+        @vote = @book.votes.where(member_id: current_member.id).first
+      else
+        @vote = @book.votes.build
+      end
+    end
   end
 
   # GET /books/new
