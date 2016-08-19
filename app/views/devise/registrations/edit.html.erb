@@ -8,6 +8,11 @@
         <%= devise_error_messages! %>
 
         <div class="field">
+          <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+          <%= f.file_field :avatar %>
+        </div>
+
+        <div class="field">
           <%= f.label :first_name %><br />
           <%= f.text_field :first_name, autofocus: true %>
         </div>

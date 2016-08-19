@@ -64,6 +64,7 @@
                         <span class="glyphicon glyphicon-log-out"></span> Sign Out
                         <% end %>
                     </li>
+                    <li class="round-image-50"><%= image_tag(current_member.avatar.url(:thumb)) %></li>
                   <% elsif current_admin %>
                     <li><%= link_to new_book_path do %>
                       <span class="fa fa-book"></span> New Book
