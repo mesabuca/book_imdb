@@ -17,6 +17,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.book{
+	background-image: image_url('newbook.jpg');
+	background-size:cover;
+}
+
+#books{
+	background-image: image_url('lib.jpg');
+	background-size:cover;
+}
+
 .sign{
 	background-image: image_url('sign.jpg');
 	background-size:cover;

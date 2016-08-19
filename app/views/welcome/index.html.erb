@@ -1,7 +1,7 @@
 
-<% if current_member || if current_admin %>
+<% if current_member or current_admin %>
 	<script type="text/javascript">
-    	window.location.href = "books"
+    	window.location.href = "/books"
     </script>
 <% else %>
 
@@ -20,5 +20,4 @@
 	</div>
 </div>
 </body>
-<% end -%>
-<% end -%>
+<% end %>
