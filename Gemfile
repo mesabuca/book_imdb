@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rails_12factor'
 gem 'paperclip', '~> 4.1'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
