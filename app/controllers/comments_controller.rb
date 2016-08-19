@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @book, notice: 'Comment was created.'
     else
-      redirect_to @book, notice: 'Do not touch comment who anotherone'
+      redirect_to @book
     end
   end
 
@@ -26,5 +26,9 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:body)
+    end
+
+    def authorize_member!
+      redirect_to rooth_path, notice: 'Do not touch comment who anotherone' unless @cooment.member_id == current_member.id
     end
 end
