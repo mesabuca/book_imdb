@@ -15,10 +15,11 @@
             <td><%= book.publisher %></td>
             <td><%= book.category.kind %></td>
           </div>
-          
           <%= link_to 'Show', book, class:"btn btn-info" %>
-          <%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning" %>
-          <%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <% if current_admin.present? %>
+            <%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning" %>
+            <%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </tr>
        
       <% end %>
