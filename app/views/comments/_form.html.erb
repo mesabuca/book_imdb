@@ -1,0 +1,10 @@
+<h2>Add a comment:</h2>
+<%= form_for([@book, @book.comments.build]) do |f| %>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, placeholder: 'Write a comment' %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
