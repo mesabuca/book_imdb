@@ -5,24 +5,24 @@
 
     <h1 class="well" align="center">Books</h1>
 
-  <div class="panel panel-success">    
-      <% @books.each do |book| %>
+    <% @books.each do |book| %>
+      <div class="panel panel-success">    
         
           <div class="panel panel-heading">
-            <h3> <%= book.name %></h3>
+            <h3> Name : <%= book.name %></h3>
           </div>
           <div class="panel panel-body">
-            <td><%= book.publisher %></td>
-            <td><%= book.category.kind %></td>
+           <h4>Publisher : <%= book.publisher %></h4>
+            <br>
+            <h4>Category : <%= book.category.kind %></h4>
+            <br>
+          <div class="col-sm-4"><%= link_to 'Show', book, class:"btn btn-info btn-block" %></div>
+          <div class="col-sm-4"><%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning btn-block" %></div>
+          <div class="col-sm-4"><%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger btn-block", data: { confirm: 'Are you sure?' } %></div>
           </div>
-          
-          <%= link_to 'Show', book, class:"btn btn-info" %>
-          <%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning" %>
-          <%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
-        </tr>
-       
-      <% end %>
-  </div>
+        
+      </div>
+    <% end %>
     <br>
 
     <%= link_to 'New Book', new_book_path %>

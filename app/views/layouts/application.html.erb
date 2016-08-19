@@ -52,12 +52,12 @@
                       </ul>
                     </li>
 
-                    <li><%= link_to destroy_member_session_path, method: :delete do %>
-                        <span class="glyphicon glyphicon-log-out"></span> Sign Out
+                    <li><%= link_to edit_member_registration_path do %>
+                        <span class="fa fa-cog"></span> <%= current_member.first_name %>
                         <% end %>
                     </li>
-                    <li><%= link_to edit_member_registration_path do %>
-                        <span class="fa fa-cog"></span> Account
+                    <li><%= link_to destroy_member_session_path, method: :delete do %>
+                        <span class="glyphicon glyphicon-log-out"></span> Sign Out
                         <% end %>
                     </li>
                   <% elsif current_admin %>
