@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818125200) do
+ActiveRecord::Schema.define(version: 20160819082528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20160818125200) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
+    t.integer  "author_id"
+    t.integer  "admin_id"
     t.index ["admin_id"], name: "index_books_on_admin_id", using: :btree
     t.index ["author_id"], name: "index_books_on_author_id", using: :btree
   end
@@ -60,8 +62,10 @@ ActiveRecord::Schema.define(version: 20160818125200) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "author_id"
     t.integer  "book_id"
     t.integer  "member_id"
+    t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
     t.index ["book_id"], name: "index_comments_on_book_id", using: :btree
     t.index ["member_id"], name: "index_comments_on_member_id", using: :btree
   end
@@ -111,6 +115,7 @@ ActiveRecord::Schema.define(version: 20160818125200) do
   add_foreign_key "books", "admins"
   add_foreign_key "books", "authors"
   add_foreign_key "books", "categories"
+  add_foreign_key "comments", "authors"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "members"
   add_foreign_key "rents", "books"
