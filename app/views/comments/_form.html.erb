@@ -1,0 +1,21 @@
+<h2 align="center"> Comments </h2>
+
+<% if current_member.present? %>
+	<%= form_for([@book, Comment.new]) do |f| %>
+	  <p>
+	    <%= f.label :body %><br>
+	    <%= f.text_area :body, placeholder: 'Write a comment', class:"form-control" %>
+	  </p>
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	<% end %>
+<% end %>
+
+<% @book.comments.reverse.each do |comment| %>
+	<hr>
+	<h4><%= comment.body %> <br> <small>Created at <%=  %> by <%= comment.member.first_name %> <%= comment.member.last_name %> </small> </h4>
+	<% if current_member.present? && comment.member_id == current_member.id %>
+		<%= link_to 'Delete', [comment.book, comment], method: :delete %>
+	<% end %>
+<% end %>

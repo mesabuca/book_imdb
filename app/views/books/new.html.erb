@@ -1,5 +1,12 @@
-<h1>New Book</h1>
+<body class="book">
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+	<div class="well">
+		<h1 align="center">New Book</h1>
 
-<%= render 'form', book: @book %>
+		<%= render 'form', book: @book %>
 
-<%= link_to 'Back', books_path %>
+		<%= link_to 'Back', books_path, class:"btn btn-default btn-block" %>
+	</div>
+</div>
+</body>

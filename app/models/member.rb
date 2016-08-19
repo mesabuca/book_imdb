@@ -5,4 +5,5 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :votes
   has_many :comments
+  has_many :rents
 end

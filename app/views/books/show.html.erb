@@ -1,31 +1,49 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @book.name %>
-</p>
+<body class="showbook">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+        <p id="notice"><%= notice %></p>
+    <div class="panel panel-primary">
 
-<p>
-  <strong>Publisher:</strong>
-  <%= @book.publisher %>
-</p>
+      <div class="panel-heading">
+        <div class="col-sm-8">
+          <h4>
+            <strong>Name:</strong>
+            <%= @book.name %>
+          </h4>
+        </div>
+        <div>
+          <h4>Average Rating:</b> <span class="badge"><%= @book.average_point %></span><br/></h4>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-8">
+          <h4><strong>Publisher:</strong>
+          <%= @book.publisher %>
+          </h4> 
+          <h4>
+            <strong>Category:</strong>
+          	<%= @book.category.kind %>
+          </h4>
 
-<p>
-  <strong>Category:</strong>
-	<%= @book.category.kind %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-	<%= link_to @book.author do %>
-		<%= @book.author.first_name + " " + @book.author.last_name %>
-	<% end %>
-</p>
-
-<b>Average Rating: </b><%= @book.average_point %><br/>
-
-<%= render 'votes/form' %>
-
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+          <h4>
+            <strong>Author:</strong>
+          	<%= link_to @book.author do %>
+          		<%= @book.author.first_name + " " + @book.author.last_name %>
+          	<% end %>
+          </h4>
+        </div>
+        <div class="col-sm-4">
+        <%= render 'votes/form' %>
+        </div>  
+        <br><br><br><br><br><br><br><br>
+        <div class="well" id="comment">
+        <%= render 'comments/form' %>
+        </div>
+        <%= link_to 'Edit', edit_book_path(@book) %> |
+        <%= link_to 'Back', books_path %>
+        </div>
+      </div>  
+    </div>  
+  </div>
+</body>

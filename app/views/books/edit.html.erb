@@ -1,6 +1,13 @@
-<h1>Editing Book</h1>
+<body class="book">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+		<div class="well">
+			<h1>Editing Book</h1>
 
-<%= render 'form', book: @book %>
-
-<%= link_to 'Show', @book %> |
-<%= link_to 'Back', books_path %>
+			<%= render 'form', book: @book %>
+			<%= link_to 'Show', @book, class:"btn btn-info btn-block" %>
+			<%= link_to 'Back', books_path, class:"btn btn-default btn-block" %>
+			<br>
+		</div>	
+	</div>
+</body>

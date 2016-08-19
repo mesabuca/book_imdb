@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin!, only: [:edit, :update, :destroy]
 
   def index
     @books = Book.all
@@ -79,4 +81,9 @@ class BooksController < ApplicationController
       @categories = Category.all.collect {|c| [c.kind, c.id ] }
       @authors = Author.all.collect {|a| [[a.first_name, a.last_name].join(" "), a.id ] }
     end
+
+    def authorize_admin!
+      redirect_to books_path, notice: 'do not touch book' unless current_admin.present?
+    end
+
 end

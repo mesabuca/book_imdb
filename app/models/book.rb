@@ -3,6 +3,7 @@ class Book < ApplicationRecord
 	has_many  :votes
 	belongs_to :author
 	has_many :comments
+	has_many :rents
 
 	def average_point
      point = votes.average(:point)
@@ -15,6 +16,7 @@ class Book < ApplicationRecord
       .group("books.id")
       .order("puan DESC")
       .limit(10)
-  end
+    end
+
 
 end

@@ -1,33 +1,38 @@
-<p id="notice"><%= notice %></p>
+<body id="books">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+    <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
+    <h1 class="well" align="center">Books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Publisher</th>
-      <th>Kind</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @books.each do |book| %>
-      <tr>
-        <td><%= book.name %></td>
-        <td><%= book.publisher %></td>
-        <td><%= book.category.kind %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-     
-    <% end %>
-  </tbody>
-</table>
+      <div class="panel panel-success">    
+        
+          <div class="panel panel-heading">
+            <h3> Name : <%= book.name %></h3>
+          </div>
+          <div class="panel panel-body">
+           <h4>Publisher : <%= book.publisher %></h4>
+            <br>
+            <h4>Category : <%= book.category.kind %></h4>
+            <br>
+          <div class="col-sm-4"><%= link_to 'Show', book, class:"btn btn-info btn-block" %></div>
+          <div class="col-sm-4"><%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning btn-block" %></div>
+          <div class="col-sm-4"><%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger btn-block", data: { confirm: 'Are you sure?' } %></div>
+          </div>
 
-<br>
+          <%= link_to 'Show', book, class:"btn btn-info" %>
+          <% if current_admin.present? %>
+            <%= link_to 'Edit', edit_book_path(book), class:"btn btn-warning" %>
+            <%= link_to 'Destroy', book, method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </tr>
+       
+      <% end %>
+  </div>
 
-<%= link_to 'New Book', new_book_path %>
+    <br>
+
+    <%= link_to 'New Book', new_book_path %>
+</div>
+</body>
