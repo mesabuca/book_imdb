@@ -38,6 +38,10 @@
                       <span class="glyphicon glyphicon-log-out"></span> Sign Out
                       </li>
                     <% end %>
+                    <li><%= link_to edit_member_session_path do %>
+                      <span class="glyphicon glyphicon-log-out"></span> Account
+                      </li>
+                    <% end %>
                   <% elsif current_admin %>
                     <li><%= link_to new_book_path do %>
                       <span class="fa fa-book"></span>New book
