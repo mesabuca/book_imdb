@@ -1,0 +1,12 @@
+
+<% @books.each do |book| %>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<i class="fa fa-plus"></i>
+			<%= link_to book.category.kind, category_path(book.category) %>
+			<i class="fa fa-angle-right"></i>
+			<%= link_to book.name, book_path(book) %>
+			<span class="pull-right label label-success">{<%= book.average_point %>}</span>
+		</div>
+	</div>
+	<% end %>

@@ -40,6 +40,13 @@
                 <ul class="nav navbar-nav navbar-right">
                   <% if current_member  %>
                   <li>
+<<<<<<< HEAD
+                    <li><%= link_to "Top Book", top_books_books_path %>
+
+                    </li>
+                  <li>
+                    <li><%= link_to "All Book", books_path %>
+=======
                     <li><%= link_to books_path do%>
                     <span class="fa fa-globe"></span> All Book
                     <% end -%>
@@ -59,6 +66,7 @@
                           </li>   <!-- category part I should write with each do dont forget TODO -->
                       </ul>
                     </li>
+>>>>>>> 5a90e8f95c8480b346d0430c3692ea9a4efde801
 
                     <li><%= link_to edit_member_registration_path do %>
                         <span class="fa fa-cog"></span> <%= current_member.first_name %>

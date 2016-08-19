@@ -7,6 +7,10 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def top_books
+    @books = Book.top_books
+  end
+  
   def show
     if current_member
       if @book.votes.where(member_id: current_member.id).any?
@@ -69,6 +73,9 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :publisher, :category_id, :author_id, :avatar)
     end
+  def index
+    @books = Book.all
+  end
 
     def set_categories
       @categories = Category.all.collect {|c| [c.kind, c.id ] }
