@@ -35,9 +35,11 @@
           		<%= @book.author.first_name + " " + @book.author.last_name %>
           	<% end %>
           </h4>
+          <%= render 'rents/rentform' %>
         </div>
         <div class="col-sm-4">
         <%= render 'votes/form' %>
+        <
         </div>  
         <br><br><br><br><br><br><br><br>
         <div class="well" id="comment">

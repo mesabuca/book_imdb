@@ -17,6 +17,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a:visited {
+    color: black;
+}
 
 .book{
 	background-image: image_url('newbook.jpg');

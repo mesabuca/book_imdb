@@ -2,19 +2,19 @@
 
 <% if current_member.present? %>
 	<%= form_for([@book, Comment.new]) do |f| %>
-	  <p>
+	  <h4>
 	    <%= f.label :body %><br>
 	    <%= f.text_area :body, placeholder: 'Write a comment', class:"form-control" %>
-	  </p>
-	  <p>
-	    <%= f.submit %>
-	  </p>
+	  </h4>
+	  <h4>
+	    <%= f.submit class:"btn btn-default btn-block"%>
+	  </h4>
 	<% end %>
 <% end %>
 
 <% @book.comments.reverse.each do |comment| %>
 	<hr>
-	<h4><%= comment.body %> <br> <small>Created at <%=  %> by <%= comment.member.first_name %> <%= comment.member.last_name %> </small> </h4>
+	<h4><%= comment.body %> <br> <small>Submitted <%= time_ago_in_words(comment.created_at) %> before, by <%= comment.member.first_name %> <%= comment.member.last_name %> </small> </h4>
 	<% if current_member.present? && comment.member_id == current_member.id %>
 		<%= link_to 'Delete', [comment.book, comment], method: :delete %>
 	<% end %>
