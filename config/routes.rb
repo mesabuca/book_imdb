@@ -2,13 +2,15 @@ Rails.application.routes.draw do
 
   resources :comments
   root to: 'welcome#index'
-  resources :books
+  resources :books do
+  	resources :votes
+  end
   devise_for :admins
   devise_for :members
   resources :authors
   get 'votes/index'
   get 'authors/index'
 
-resources :categories
+  resources :categories
 
 end
