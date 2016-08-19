@@ -1,14 +1,4 @@
-<h3>All rents</h3>
-<% @book.rents.each do |rent| %>
-	<h4><%= rent.member.email %></h4>
-	<%= rent.date_of_receipt %></br>
-	<%= rent.book.name %></br>
-	
-	<hr>
-<% end %>
-<h3>Create Rent</h3>
-<%= form_for ([@book, @book.rents.build]) do |f| %>
-	
-	<%= f.date_field :date_of_receipt %>
-	<%= f.submit 'kirala lan' %>
+
+<%= form_for ([@book, @book.rents.build]) do |f| %>	
+	<%= f.submit 'Rent' %>
 <% end %>
