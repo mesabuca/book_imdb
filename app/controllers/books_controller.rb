@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :get_book, only: [:destroy]
   before_action :authorize_admin!, only: [:edit, :update, :destroy]
 
   def index
@@ -77,6 +78,10 @@ class BooksController < ApplicationController
 
     def authorize_admin!
       redirect_to books_path, notice: 'do not touch book' unless current_admin.present?
+    end
+
+    def get_book
+      @book = Book.find(params[:id])
     end
 
 end
