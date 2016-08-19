@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :comments
   root to: 'welcome#index'
   resources :books do
+  	resources :comments
   	resources :votes, only: [:create, :update]
   end
   devise_for :admins

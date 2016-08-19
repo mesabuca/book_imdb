@@ -72,4 +72,5 @@ class BooksController < ApplicationController
       @categories = Category.all.collect {|c| [c.kind, c.id ] }
       @authors = Author.all.collect {|a| [[a.first_name, a.last_name].join(" "), a.id ] }
     end
+
 end
