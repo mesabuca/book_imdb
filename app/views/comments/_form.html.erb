@@ -1,16 +1,19 @@
 <h3> Comments </h3>
 <% @book.comments.each do |comment| %>
 	<%= comment.body %>
-	<%= link_to 'Delete', [comment.book, comment], method: :delete %>
+	<% if current_member.present? && comment.member_id == current_member.id %>
+		<%= link_to 'Delete', [comment.book, comment], method: :delete %>
+	<% end %>
 <% end %>
-
-<h2>Add a comment:</h2>
-<%= form_for([@book, @book.comments.build]) do |f| %>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body, placeholder: 'Write a comment' %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+<% if current_member.present? %>
+	<h2>Add a comment:</h2>
+	<%= form_for([@book, @book.comments.build]) do |f| %>
+	  <p>
+	    <%= f.label :body %><br>
+	    <%= f.text_area :body, placeholder: 'Write a comment' %>
+	  </p>
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	<% end %>
 <% end %>

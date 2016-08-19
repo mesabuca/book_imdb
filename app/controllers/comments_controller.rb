@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_member!
   before_action :get_book
-
-  def edit
-  end
+  before_action :get_comment, only: [:destroy]
+  before_action :authorize_member!, only: [:destroy]
 
   def create
     @comment = @book.comments.new(comment_params)
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    
     @comment.destroy
     redirect_to @book, notice: 'Comment was deleted.'
   end
@@ -31,6 +31,10 @@ class CommentsController < ApplicationController
     end
 
     def authorize_member!
-      redirect_to rooth_path, notice: 'Do not touch comment who anotherone' unless @cooment.member_id == current_member.id
+      redirect_to root_path, notice: 'Do not touch comment who anotherone' unless @comment.member_id == current_member.id
+    end
+
+    def get_comment
+      @comment = Comment.find(params[:id])
     end
 end
