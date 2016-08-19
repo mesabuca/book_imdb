@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_receipt: 2016-08-18 21:09:12
+
+two:
+  date_of_receipt: 2016-08-18 21:09:12

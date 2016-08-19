@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 20160818125200) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
-    t.integer  "author_id"
-    t.integer  "admin_id"
     t.index ["admin_id"], name: "index_books_on_admin_id", using: :btree
     t.index ["author_id"], name: "index_books_on_author_id", using: :btree
   end
@@ -90,6 +88,16 @@ ActiveRecord::Schema.define(version: 20160818125200) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "rents", force: :cascade do |t|
+    t.datetime "date_of_receipt"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "member_id"
+    t.integer  "book_id"
+    t.index ["book_id"], name: "index_rents_on_book_id", using: :btree
+    t.index ["member_id"], name: "index_rents_on_member_id", using: :btree
+  end
+
   create_table "votes", force: :cascade do |t|
     t.integer  "point"
     t.datetime "created_at", null: false
@@ -105,6 +113,8 @@ ActiveRecord::Schema.define(version: 20160818125200) do
   add_foreign_key "books", "categories"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "members"
+  add_foreign_key "rents", "books"
+  add_foreign_key "rents", "members"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "members"
 end

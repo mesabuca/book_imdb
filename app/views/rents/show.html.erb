@@ -1,0 +1,10 @@
+<h1><%= @rent.date_of_receipt %></h1>
+
+  <b>ID </b><%= @book.id %>
+  <b>Title </b>
+  <%= link_to @book.name, book_path(@book) %><br/>
+
+<h3>
+	<%= link_to 'Edit rent', edit_rent_path %>
+	<%= link_to 'Destroy rent', rent_path(@rent), method: :delete %>
+</h3>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+
   root to: 'welcome#index'
   resources :books do
+    resources :rents
   	resources :comments
   	resources :votes, only: [:create, :update]
   end
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
 
 
 resources :categories
+resources :rents
 
 
 end
