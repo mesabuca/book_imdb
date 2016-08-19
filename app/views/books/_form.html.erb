@@ -21,12 +21,15 @@
     <%= f.text_field :publisher %>
   </div>
 
- <div class="field">
+  <div class="field">
     <%= f.label :category %>
     <%= f.select :category_id, @categories %>
   </div>
 
-
+  <div class="field">
+    <%= f.label :author %>
+    <%= f.select :author_id, @authors %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
