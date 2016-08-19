@@ -5,6 +5,8 @@ class Book < ApplicationRecord
 	has_many :comments
 
 	def average_point
-     votes.average(:point).to_s
+     point = votes.average(:point)
+     point ? point.to_s : "0.0"
     end
+    
 end
