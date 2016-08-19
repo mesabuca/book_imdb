@@ -34,6 +34,12 @@
             </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <% if current_member  %>
+                  <li>
+                    <li><%= link_to "All Book", books_path %>
+
+                    </li>
+                    <li><%= link_to "New Book", new_book_path %>
+                  </li>
                     <li><%= link_to destroy_member_session_path, method: :delete do %>
                       <span class="glyphicon glyphicon-log-out"></span> Sign Out
                       </li>

@@ -23,15 +23,7 @@
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <div id="comment<%=book.id%>" class="collapse<% book.id %>">
-              <%= simple_form_for [book, Comment.new]  do |b| %>
-                <div class="field">
-                  <%= b.text_area :body, class: "form-control" %>
-                </div>
-                <br>
-                <%= b.submit "Add Comment", class: "btn btn-primary" %>
-              <% end %>
-            </div>
+     
     <% end %>
   </tbody>
 </table>

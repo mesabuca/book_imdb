@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
   resources :books do
-  	resources :votes
   	resources :comments
+  	resources :votes, only: [:create, :update]
   end
   devise_for :admins
   devise_for :members
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'votes/index'
   get 'authors/index'
 
-  resources :categories
+
+resources :categories
+
 
 end
