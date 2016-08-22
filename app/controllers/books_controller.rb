@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show, :top_books]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :get_book, only: [:destroy]
   before_action :authorize_admin!, only: [:edit, :update, :destroy]
@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   end
 
   def top_books
-    @books = Book.top_books
+    @top_books = Book.top_books
   end
   
   def show
@@ -74,9 +74,6 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :publisher, :category_id, :author_id, :avatar)
     end
-  def index
-    @books = Book.all
-  end
 
     def set_categories
       @categories = Category.all.collect {|c| [c.kind, c.id ] }

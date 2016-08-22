@@ -1,5 +1,3 @@
-
-
 <body class="showbook">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
@@ -27,8 +25,6 @@
           	<%= @book.category.kind %>
           </h4>
 
-          <%= render 'rents/rentform' %>
-
           <h4>
             <strong>Author:</strong>
           	<%= link_to @book.author do %>
@@ -39,11 +35,10 @@
         </div>
         <div class="col-sm-4">
         <%= render 'votes/form' %>
-        <
         </div>  
         <br><br><br><br><br><br><br><br>
         <div class="well" id="comment">
-        <%= render 'comments/form' %>
+          <%= render 'comments/form' %>
         </div>
         <% if current_admin.present? %>
           <%= link_to 'Edit', edit_book_path(@book) %> |

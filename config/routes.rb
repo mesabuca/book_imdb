@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
 
   resources :books do
-    #resources :rents
   	resources :comments
   	resources :votes, only: [:create, :update]
     collection do
@@ -17,12 +16,6 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :members
   resources :authors
-  #get 'votes/index'
-  #get 'authors/index'
-  resources :categories, only: [:show, :index]
-resources :categories
-resources :rents
-
-
-
+  resources :categories
+  resources :rents
 end
