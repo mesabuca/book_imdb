@@ -8,15 +8,15 @@
 <div class="container">
 <%= form_for @author do |f| %>
   <%= f.label "First Name" %>
-  <%= f.text_field :first_name, class: "form-control input-sm" %><br>
+  <%= f.text_field :first_name, class: "form-control input-lg" %><br>
   <br>
   <%= f.label "Last Name" %>
   <br>
-  <%= f.text_field :last_name, class: "form-control input-sm" %><br>
+  <%= f.text_field :last_name, class: "form-control input-lg" %><br>
   <br>
   <%= f.label "Biyografi" %>
   <br>
-  <%= f.text_area :biography, rows: 20, col: 20 %><br>
+  <%= f.text_area :biography, class:"form-control input-lg"%><br>
   <br>
   
   <% @author.books.each do |b| %>
