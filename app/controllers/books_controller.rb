@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def top_books
-    @books = Book.top_books
+    @top_books = Book.top_books
   end
   
   def show
@@ -73,9 +73,6 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :publisher, :category_id, :author_id, :avatar)
     end
-  def index
-    @books = Book.all
-  end
 
     def set_categories
       @categories = Category.all.collect {|c| [c.kind, c.id ] }
